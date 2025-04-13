@@ -5,7 +5,7 @@ export default function BookingPage() {
     <>
       <section>
         <div className="max-w-xl mx-auto px-4 py-8">
-        <BookingForm />
+          <BookingForm />
         </div>
       </section>
     </>

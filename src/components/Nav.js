@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <nav class="md:ml-auto">
+    <nav className="md:ml-auto">
       <ul className="flex flex-wrap gap-6 items-center text-base justify-center">
         <li>
           <Link to="/">Home</Link>
