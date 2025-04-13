@@ -1,14 +1,28 @@
+import { Link } from "react-router-dom";
+
 export default function Nav() {
-    return (
-        <nav>
-            <ul className="flex flex-row gap-4">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#reservations">Reservations</a></li>
-                <li><a href="#order-online">Order Online</a></li>
-                <li><a href="#login">Login</a></li>
-            </ul>
-        </nav>
-    )
+  return (
+    <nav class="md:ml-auto">
+      <ul className="flex flex-wrap gap-6 items-center text-base justify-center">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <a href="#about">About</a>
+        </li>
+        <li>
+          <a href="#menu">Menu</a>
+        </li>
+        <li>
+          <Link to="/booking">Reservations</Link>
+        </li>
+        <li>
+          <a href="#order-online">Order Online</a>
+        </li>
+        <li>
+          <a href="#login">Login</a>
+        </li>
+      </ul>
+    </nav>
+  );
 }

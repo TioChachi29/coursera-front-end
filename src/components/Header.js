@@ -2,10 +2,14 @@ import logo from "../assets/Logo.svg";
 import Nav from "./Nav";
 
 export default function Header() {
-    return (
-        <header className="grid grid-cols-1 gap-4 items-center p-4 md:grid-cols-2">
-            <img src={logo} alt="Little Lemon" className="grid-colspan-2" />
-            <Nav />
-        </header>
-    )
+  return (
+    <header class="text-gray-600 body-font">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <img src={logo} alt="Little Lemon" />
+        </div>
+        <Nav />
+      </div>
+    </header>
+  );
 }
