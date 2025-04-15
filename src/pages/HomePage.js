@@ -1,52 +1,63 @@
-import Special from "../components/Special";
-import Testimonial from "../components/Testimonial";
-
 import lemonDessert from "../assets/lemon dessert.jpg";
 import greekSalad from "../assets/greek salad.jpg";
+import bruschetta from "../assets/bruschetta.jpg";
 import chefB from "../assets/restaurant chef B.jpg";
+import marioAdrianA from "../assets/Mario and Adrian A.jpg";
+import marioAdrianB from "../assets/Mario and Adrian b.jpg";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
+import SpecialsSection from "../components/sections/SpecialsSection";
+import TestimonialsSection from "../components/sections/TestimonialsSection";
 
 export default function HomePage() {
   const testimonials = [
     {
       testimonial:
-        "Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolor? Natus dignissimos a ratione quod.",
       name: "Laura",
-      occupation: "Designer",
+      occupation: "DESIGNER",
     },
     {
       testimonial:
-        "Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolor? Natus dignissimos a ratione quod.",
       name: "John",
-      occupation: "Developer",
+      occupation: "DEVELOPER",
     },
     {
       testimonial:
-        "Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolor? Natus dignissimos a ratione quod.",
       name: "Alice",
-      occupation: "Manager",
+      occupation: "MANAGER",
     },
     {
       testimonial:
-        "Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolor? Natus dignissimos a ratione quod.",
       name: "Bob",
-      occupation: "Chef",
+      occupation: "CHEF",
     },
   ];
 
   const specials = [
     {
-      title: "Chichen Itza",
-      price: "",
+      title: "Greek Salad",
+      price: "$12.99",
       description:
-        "Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolor? Natus dignissimos a ratione quod? Dolore dignissimos perspiciatis corrupti sapiente beatae laudantium.",
       image: greekSalad,
     },
     {
-      title: "Chichen Itza",
-      price: "",
+      title: "Lemon Dessert",
+      price: "$12.99",
       description:
-        "Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolor? Natus dignissimos a ratione quod? Dolore dignissimos perspiciatis corrupti sapiente beatae laudantium.",
       image: lemonDessert,
+    },
+    {
+      title: "Bruschetta",
+      price: "$12.99",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolor? Natus dignissimos a ratione quod? Dolore dignissimos perspiciatis corrupti sapiente beatae laudantium.",
+      image: bruschetta,
     },
   ];
 
@@ -61,15 +72,15 @@ export default function HomePage() {
               readymade gluten
             </h1>
             <p className="mb-8 leading-relaxed">
-              Copper mug try-hard pitchfork pour-over freegan heirloom neutra
-              air plant cold-pressed tacos poke beard tote bag. Heirloom echo
-              park mlkshk tote bag selvage hot chicken authentic tumeric
-              truffaut hexagon try-hard chambray.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil,
+              dolor? Natus dignissimos a ratione quod? Dolore dignissimos
+              perspiciatis corrupti sapiente beatae laudantium, at ducimus iusto
+              labore tempore fugiat voluptate facere.
             </p>
             <div className="flex justify-center">
-              <button className="inline-flex text-dark bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-secondary/80 rounded text-lg">
-                Button
-              </button>
+              <Link to="/booking">
+                <Button>Reserve a table</Button>
+              </Link>
             </div>
           </div>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -82,68 +93,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section>
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap w-full mb-20">
-            <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-              <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-dark">
-                This weeks specials!
-              </h1>
-            </div>
-            <div className="lg:w-1/2 w-full flex justify-end">
-              <button className="inline-flex text-dark bg-secondary border-0 py-2 px-6 focus:outline-none hover:bg-secondary/80 rounded text-lg">
-                Button
-              </button>
-            </div>
-          </div>
-          <div className="flex flex-wrap -m-4">
-            {specials.map((special, index) => (
-              <Special key={index} {...special} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <SpecialsSection specials={specials} />
 
-      <section className="bg-gray-100">
-        <div className="container px-5 py-24 mx-auto">
-          <h1 className="text-3xl font-medium title-font text-gray-900 mb-12 text-center">
-            Testimonials
-          </h1>
-          <div className="flex flex-wrap -m-4">
-            {testimonials.map((testimonial, index) => (
-              <Testimonial key={index} {...testimonial} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection testimonials={testimonials} />
 
-      <section class="bg-primary">
-        <div class="container px-5 py-24 mx-auto gap-16 items-center lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-          <div class="font-light text-gray-300 sm:text-lg">
-            <h1 className="text-3xl font-medium title-font text-white mb-12">
-              We didn't reinvent the wheel
+      <section className="bg-primary">
+        <div className="container px-5 py-24 mx-auto gap-16 items-center lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+          <div className="text-gray-300 sm:text-lg">
+            <h1 className="text-3xl font-medium title-font text-white mb-2">
+              Little Lemon
             </h1>
-            <p class="mb-4">
-              We are strategists, designers and developers. Innovators and
-              problem solvers. Small enough to be simple and quick, but big
-              enough to deliver the scope you want at the pace you need. Small
-              enough to be simple and quick, but big enough to deliver the scope
-              you want at the pace you need.
+            <h2 className="text-white mb-8">Chicago</h2>
+            <p className="mb-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil,
+              dolor? Natus dignissimos a ratione quod? Dolore dignissimos
+              perspiciatis corrupti sapiente beatae laudantium, at ducimus iusto
+              labore tempore fugiat voluptate facere.
             </p>
             <p>
-              We are strategists, designers and developers. Innovators and
-              problem solvers. Small enough to be simple and quick.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil,
+              dolor? Natus dignissimos a ratione quod.
             </p>
           </div>
-          <div class="grid grid-cols-2 gap-4 mt-8">
+          <div className="grid grid-cols-2 gap-4 mt-8">
             <img
-              class="w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png"
+              className="w-full rounded-lg"
+              src={marioAdrianA}
               alt="office content 1"
             />
             <img
-              class="mt-4 w-full lg:mt-10 rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
+              className="mt-12 w-full lg:mt-10 rounded-lg -ml-22"
+              src={marioAdrianB}
               alt="office content 2"
             />
           </div>

@@ -8,19 +8,19 @@ export default function Nav() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#about">About</a>
+          <span>About</span>
         </li>
         <li>
-          <a href="#menu">Menu</a>
+          <span>Menu</span>
         </li>
         <li>
-          <Link to="/booking">Reservations</Link>
+          <span>Reservations</span>
         </li>
         <li>
-          <a href="#order-online">Order Online</a>
+          <span>Order Online</span>
         </li>
         <li>
-          <a href="#login">Login</a>
+          <span>Login</span>
         </li>
       </ul>
     </nav>
