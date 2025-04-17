@@ -44,7 +44,7 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
           onChange={(e) => setForm({ ...form, time: e.target.value })}
           required
         >
-          {availableTimes.map((time, index) => (
+          {availableTimes?.map((time, index) => (
             <option key={time}>{time}</option>
           ))}
         </select>
@@ -78,7 +78,7 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
         </select>
       </div>
       <div>
-        <Button type="submit">Make Your reservation</Button>
+        <Button type="submit">Book Now</Button>
       </div>
     </form>
   );
