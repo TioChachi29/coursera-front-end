@@ -1,5 +1,5 @@
 import Button from "../Button";
-import Special from "../Special";
+import SpecialCard from "../SpecialCard";
 
 export default function SpecialsSection({ ...props }) {
   const { specials } = props;
@@ -19,7 +19,7 @@ export default function SpecialsSection({ ...props }) {
         </div>
         <div className="flex flex-wrap -m-4">
           {specials.map((special, index) => (
-            <Special key={index} {...special} />
+            <SpecialCard key={index} {...special} />
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 import laura from "../assets/laura.png";
 
-export default function Testimonial({ ...props }) {
+export default function TestimonialCard({ ...props }) {
   return (
     <div className="p-4 md:w-1/4 w-full">
       <div className="h-full bg-white p-8 rounded">

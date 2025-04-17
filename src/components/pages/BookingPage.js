@@ -1,9 +1,9 @@
-import BookingForm from "../components/BookingForm";
+import BookingForm from "../BookingForm";
 
-export default function BookingPage() {
+export default function BookingPage(props) {
   return (
     <>
-      <section className="bg-primary text-primary-foreground">
+      <header className="bg-primary text-primary-foreground">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow flex flex-col items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">
@@ -14,11 +14,15 @@ export default function BookingPage() {
             </p>
           </div>
         </div>
-      </section>
+      </header>
 
       <section className="bg-gray-100/50">
         <div className="max-w-xl mx-auto px-4 py-24">
-          <BookingForm />
+          <BookingForm
+            availableTimes={props.availableTimes}
+            dispatch={props.dispatch}
+            submitForm={props.submitForm}
+          />
         </div>
       </section>
     </>

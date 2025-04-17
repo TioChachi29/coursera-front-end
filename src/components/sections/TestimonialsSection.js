@@ -1,4 +1,4 @@
-import Testimonial from "../Testimonial";
+import TestimonialCard from "../TestimonialCard";
 
 export default function TestimonialsSection({ ...props }) {
   const { testimonials } = props;
@@ -11,7 +11,7 @@ export default function TestimonialsSection({ ...props }) {
         </h1>
         <div className="flex flex-wrap -m-4">
           {testimonials.map((testimonial, index) => (
-            <Testimonial key={index} {...testimonial} />
+            <TestimonialCard key={index} {...testimonial} />
           ))}
         </div>
       </div>

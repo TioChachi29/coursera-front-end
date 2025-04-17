@@ -1,39 +1,48 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function BookingForm() {
-  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+export default function BookingForm({ availableTimes, dispatch, submitForm }) {
   const occasions = ["Birthday", "Anniversary"];
 
   const [form, setForm] = useState({
     date: "",
     time: "",
     guests: 1,
-    occasion: "Birthday",
+    occasion: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("form", form);
+    submitForm(e);
+  };
+
+  const handleDateChange = (e) => {
+    dispatch(e);
   };
 
   return (
-    <form className="flex flex-col gap-6" {...form} onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-1">
         <label htmlFor="res-date">Choose date</label>
         <input
           type="date"
           id="res-date"
-          onChange={(e) => setForm({ ...form, date: e.target.value })}
+          onChange={(e) => {
+            setForm({ ...form, date: e.target.value });
+            handleDateChange(e.target.value);
+          }}
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
+          required
         />
       </div>
       <div className="flex flex-col gap-1">
         <label htmlFor="res-time">Choose time</label>
         <select
-          id="res-time "
-          onChange={(e) => setForm({ ...form, time: e.target.value })}
+          id="res-time"
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
+          onChange={(e) => setForm({ ...form, time: e.target.value })}
+          required
         >
           {availableTimes.map((time, index) => (
             <option key={time}>{time}</option>
@@ -50,6 +59,7 @@ export default function BookingForm() {
           id="guests"
           onChange={(e) => setForm({ ...form, guests: e.target.value })}
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
+          required
         />
       </div>
       <div className="flex flex-col gap-1">
@@ -58,6 +68,7 @@ export default function BookingForm() {
           id="occasion"
           onChange={(e) => setForm({ ...form, occasion: e.target.value })}
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
+          required
         >
           {occasions.map((occarsion) => (
             <option value={occarsion} key={occarsion}>

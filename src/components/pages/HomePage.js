@@ -1,13 +1,13 @@
-import lemonDessert from "../assets/lemon dessert.jpg";
-import greekSalad from "../assets/greek salad.jpg";
-import bruschetta from "../assets/bruschetta.jpg";
-import chefB from "../assets/restaurant chef B.jpg";
-import marioAdrianA from "../assets/Mario and Adrian A.jpg";
-import marioAdrianB from "../assets/Mario and Adrian b.jpg";
-import Button from "../components/Button";
+import lemonDessert from "../../assets/lemon dessert.jpg";
+import greekSalad from "../../assets/greek salad.jpg";
+import bruschetta from "../../assets/bruschetta.jpg";
+import chefB from "../../assets/restaurant chef B.jpg";
+import marioAdrianA from "../../assets/Mario and Adrian A.jpg";
+import marioAdrianB from "../../assets/Mario and Adrian b.jpg";
+import Button from "../Button";
 import { Link } from "react-router-dom";
-import SpecialsSection from "../components/sections/SpecialsSection";
-import TestimonialsSection from "../components/sections/TestimonialsSection";
+import SpecialsSection from "../sections/SpecialsSection";
+import TestimonialsSection from "../sections/TestimonialsSection";
 
 export default function HomePage() {
   const testimonials = [
@@ -63,7 +63,7 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="bg-primary text-primary-foreground">
+      <header className="bg-primary text-primary-foreground">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">
@@ -91,7 +91,7 @@ export default function HomePage() {
             />
           </div>
         </div>
-      </section>
+      </header>
 
       <SpecialsSection specials={specials} />
 
