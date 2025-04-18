@@ -5,11 +5,35 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
   const occasions = ["Birthday", "Anniversary"];
 
   const [form, setForm] = useState({
-    date: "",
-    time: "",
-    guests: 1,
-    occasion: "",
+    date: { value: "", touched: false },
+    time: { value: "", touched: false },
+    guests: { value: "1", touched: false },
+    occasion: { value: "", touched: false },
   });
+
+  const handleChange = (field, value) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: {
+        ...prev[field],
+        value,
+      },
+    }));
+
+    if (field === "date") {
+      dispatch(value);
+    }
+  };
+
+  const handleBlur = (field) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: {
+        ...prev[field],
+        touched: true,
+      },
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,30 +48,41 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-1">
-        <label htmlFor="res-date">Choose date</label>
+        <label htmlFor="date">Choose date</label>
         <input
           type="date"
-          id="res-date"
-          onChange={(e) => {
-            setForm({ ...form, date: e.target.value });
-            handleDateChange(e.target.value);
-          }}
+          id="date"
+          value={form.date.value}
+          onChange={(e) => handleChange("date", e.target.value)}
+          onBlur={() => handleBlur("date")}
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
           required
         />
+        {(!form.date.value && form.date.touched) && (
+          <p className="text-red-600">
+            The date is required.Please select a date.
+          </p>
+        )}
       </div>
       <div className="flex flex-col gap-1">
-        <label htmlFor="res-time">Choose time</label>
+        <label htmlFor="time">Choose time</label>
         <select
-          id="res-time"
+          id="time"
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
-          onChange={(e) => setForm({ ...form, time: e.target.value })}
+          value={form.time.value}
+          onChange={(e) => handleChange("time", e.target.value)}
+          onBlur={() => handleBlur("time")}
           required
         >
           {availableTimes?.map((time, index) => (
             <option key={time}>{time}</option>
           ))}
         </select>
+        {(!form.time.value && form.time.touched) && (
+          <p className="text-red-600">
+            The time is required.Please select a time.
+          </p>
+        )}
       </div>
       <div className="flex flex-col gap-1">
         <label htmlFor="guests">Number of guests</label>
@@ -57,25 +92,39 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
           min="1"
           max="10"
           id="guests"
-          onChange={(e) => setForm({ ...form, guests: e.target.value })}
+          value={form.guests.value}
+          onChange={(e) => handleChange("guests", e.target.value)}
+          onBlur={() => handleBlur("guests")}
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
           required
         />
+        {((form.guests.value < 1 || form.guests.value > 10) && form.date.touched) && (
+          <p className="text-red-600">
+            The number of guests must be between 1 and 10.
+          </p>
+        )}
       </div>
       <div className="flex flex-col gap-1">
         <label htmlFor="occasion">Occasion</label>
         <select
           id="occasion"
-          onChange={(e) => setForm({ ...form, occasion: e.target.value })}
+          value={form.occasion.value}
+          onChange={(e) => handleChange("occasion", e.target.value)}
+          onBlur={() => handleBlur("occasion")}
           className="bg-gray-200 p-2 rounded-md border border-gray-300"
           required
         >
-          {occasions.map((occarsion) => (
-            <option value={occarsion} key={occarsion}>
-              {occarsion}
+          {occasions.map((occasion) => (
+            <option value={occasion} key={occasion}>
+              {occasion}
             </option>
           ))}
         </select>
+        {(!form.occasion && form.date.touched) && (
+          <p className="text-red-600">
+            The occasion is required.Please select a occasion.
+          </p>
+        )}
       </div>
       <div>
         <Button type="submit">Book Now</Button>
