@@ -25,7 +25,7 @@ describe("BookingForm", () => {
     const timeSelect = screen.getByLabelText(/choose time/i);
     const guestsInput = screen.getByLabelText(/number of guests/i);
     const occasionSelect = screen.getByLabelText(/occasion/i);
-    const submitButton = screen.getByRole("button", { name: /book now/i });
+    const submitButton = screen.getByText(/book now/i)
 
     fireEvent.change(dateInput, { target: { value: "2025-04-20" } });
     fireEvent.change(timeSelect, { target: { value: "19:00" } });

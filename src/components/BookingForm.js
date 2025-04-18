@@ -127,7 +127,7 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
         )}
       </div>
       <div>
-        <Button type="submit">Book Now</Button>
+        <Button type="submit" role="button">Book Now</Button>
       </div>
     </form>
   );
